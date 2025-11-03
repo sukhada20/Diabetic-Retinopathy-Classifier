@@ -38,7 +38,7 @@ def load_model():
         st.stop()
     except Exception as e:
         st.error(f"Error loading model state_dict: {e}")
-        st.info("Ensure the model architecture (ResNet18) and the number of classes (5) match your saved .pth file.")
+        st.info("Ensure the model architecture and the number of classes (5) match your saved .pth file.")
         st.stop()
 
     # Set the model to evaluation mode (e.g., turns off dropout)
@@ -75,7 +75,7 @@ def preprocess_image(image_bytes):
 
 # --- STREAMLIT APP INTERFACE ---
 st.set_page_config(page_title="Diabetic Retinopathy Detection", layout="wide")
-st.title("👁️ Diabetic Retinopathy Classification (ResNet18)")
+st.title("👁️ Diabetic Retinopathy Classification")
 st.write("Upload a retinal scan image to classify its DR stage.")
 
 # Load the model

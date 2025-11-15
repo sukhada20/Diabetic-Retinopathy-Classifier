@@ -65,16 +65,11 @@ if uploaded_file is not None:
             # Model predicts probabilities for each class
             probabilities = model.predict(preprocessed_img)[0]
             predicted_index = np.argmax(probabilities)
-            confidence_percent = np.max(probabilities) * 100
             predicted_class_name = CLASS_NAMES[predicted_index]
 
             with col2:
                 st.subheader("Prediction Result")
                 st.success(f"**Diagnosis:** {predicted_class_name}")
-                st.info(f"**Confidence:** {confidence_percent:.2f}%")
-                # Display probabilities
-                st.write("Full Probabilities:")
-                st.dataframe({name: f"{prob*100:.2f}%" for name, prob in zip(CLASS_NAMES, probabilities)},
-                             column_config={"value": "Probability"})
+
         except Exception as e:
             st.error(f"Error during prediction: {e}")
